@@ -1,0 +1,239 @@
+.bg-unknown-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -10px -10px;
+}
+
+.bg-tstorms-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -158px -10px;
+}
+
+.bg-sunny-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -10px -158px;
+}
+
+.bg-snow-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -158px -158px;
+}
+
+.bg-sleet-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -306px -10px;
+}
+
+.bg-rain-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -306px -158px;
+}
+
+.bg-partlysunny-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -10px -306px;
+}
+
+.bg-partlycloudy-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -158px -306px;
+}
+
+.bg-nt_unknown-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -306px -306px;
+}
+
+.bg-nt_tstorms-128 {
+  width: 64px;
+  height: 128px;
+  background: url("weather-icons-128.png") -454px -10px;
+}
+
+.bg-nt_sunny-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -454px -158px;
+}
+
+.bg-nt_snow-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -454px -306px;
+}
+
+.bg-nt_sleet-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -10px -454px;
+}
+
+.bg-nt_rain-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -158px -454px;
+}
+
+.bg-nt_partlysunny-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -306px -454px;
+}
+
+.bg-nt_partlycloudy-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -454px -454px;
+}
+
+.bg-nt_mostlysunny-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -602px -10px;
+}
+
+.bg-nt_mostlycloudy-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -602px -158px;
+}
+
+.bg-nt_hazy-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -602px -306px;
+}
+
+.bg-nt_fog-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -602px -454px;
+}
+
+.bg-nt_flurries-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -10px -602px;
+}
+
+.bg-nt_cloudy-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -158px -602px;
+}
+
+.bg-nt_clear-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -306px -602px;
+}
+
+.bg-nt_chancetstorms-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -454px -602px;
+}
+
+.bg-nt_chancesnow-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -602px -602px;
+}
+
+.bg-nt_chancesleet-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -750px -10px;
+}
+
+.bg-nt_chancerain-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -750px -158px;
+}
+
+.bg-nt_chanceflurries-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -750px -306px;
+}
+
+.bg-mostlysunny-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -750px -454px;
+}
+
+.bg-mostlycloudy-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -750px -602px;
+}
+
+.bg-hazy-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -10px -750px;
+}
+
+.bg-fog-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -158px -750px;
+}
+
+.bg-flurries-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -306px -750px;
+}
+
+.bg-cloudy-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -454px -750px;
+}
+
+.bg-clear-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -602px -750px;
+}
+
+.bg-chancetstorms-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -750px -750px;
+}
+
+.bg-chancesnow-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -898px -10px;
+}
+
+.bg-chancesleet-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -898px -158px;
+}
+
+.bg-chancerain-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -898px -306px;
+}
+
+.bg-chanceflurries-128 {
+  width: 128px;
+  height: 128px;
+  background: url("weather-icons-128.png") -898px -454px;
+}
