@@ -3,88 +3,107 @@
     <div class="flex items-center justify-center">
       <div class="bg-sunny-128"></div>
       <div class="text-7xl">
-        {{ Math.round(weather.result.main.temp) }}&deg;
+        {{ Math.round(weather.result.currently.temperature) }}&deg;
       </div>
     </div>
     <div class="flex items-center justify-between text-2xl">
       <div class="flex items-center gap-1">
         <div class="text-red-500"><mdicon name="thermometer-high" /></div>
-        <div>{{ Math.round(weather.result.main.temp_max) }}&deg;</div>
+        <div>
+          {{ Math.round(weather.result.daily.data[0].temperatureHigh) }}&deg;
+        </div>
         <div class="text-blue-300">
           <mdicon name="thermometer-low" />
         </div>
-        <div>{{ Math.round(weather.result.main.temp_min) }}&deg;</div>
+        <div>
+          {{ Math.round(weather.result.daily.data[0].temperatureLow) }}&deg;
+        </div>
       </div>
-      <!-- <div class="flex"><mdicon name="umbrella" class="mt-1 mr-2" />0%</div> -->
+      <div class="flex items-center gap-1">
+        <mdicon name="umbrella" class="text-blue-700" />{{
+          Math.round(weather.result.currently.precipProbability * 100)
+        }}%
+      </div>
       <div class="flex items-center gap-1">
         <mdicon name="weather-windy" class="text-slate-500" />{{
-          Math.round(weather.result.wind.speed)
+          Math.round(weather.result.currently.windSpeed)
         }}
         mph
       </div>
       <div class="flex items-center gap-1">
         <mdicon name="water-percent" class="text-blue-700" />{{
-          Math.round(weather.result.main.humidity)
+          Math.round(weather.result.currently.humidity)
         }}%
       </div>
       <div class="flex items-center gap-1">
         <div><mdicon name="weather-sunset-up" class="text-yellow-300" /></div>
-        <div>6:53 AM</div>
+        <div>
+          {{
+            dayjs
+              .unix(weather.result.daily.data[0].sunriseTime)
+              .format("h:mm A")
+          }}
+        </div>
         <div class="ml-3">
           <mdicon name="weather-sunset-down" class="text-yellow-300" />
         </div>
-        <div>7:13 PM</div>
+        <div>
+          {{
+            dayjs.unix(weather.result.daily.data[0].sunsetTime).format("h:mm A")
+          }}
+        </div>
       </div>
     </div>
   </div>
-  <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
-  <div v-if="weather.result" class="justify-center items-center flex gap-6">
-    <div v-for="day in forecast.result" :id="day.dt">
-      {{ dayjs.unix(day.dt).format("dddd") }}
-      <div class="bg-clear-64"></div>
-      <div class="flex justify-center gap-1">
-        <div>{{ Math.round(day.main.temp_min) }}&deg;</div>
-        <div>/</div>
-        <div>{{ Math.round(day.main.temp_max) }}&deg;</div>
+  <hr class="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700" />
+  <div class="flex items-center justify-center text-slate-400">
+    <div v-for="day in forecast" :id="day.time" class="text-center">
+      <div class="w-36">
+        <div>{{ dayjs.unix(day.time).format("dddd") }}</div>
+        <div class="justify-center flex">
+          <div class="bg-clear-64">&nbsp;</div>
+        </div>
       </div>
-      <div></div>
+      <div>
+        <div class="flex justify-center items-center gap-1">
+          <div><mdicon name="umbrella" size="18" /></div>
+          <div>{{ day.precipProbability }}%</div>
+          <div class="ml-2"><mdicon name="weather-windy" size="18" /></div>
+          <div>{{ Math.round(day.windSpeed) }}mph</div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { reactive } from "vue";
+import { computed, reactive } from "vue";
 import dayjs from "dayjs";
 
-// const apiKey = "ddbf85f45a7e0395dadd41d36ce35687";
-const apiKey = "aybNUYnBNDLYdNAt1KbYGSDmb8IXm2ly";
+const apiKey = import.meta.env.VITE_PIRATE_WEATHER_API_KEY;
 const weather = reactive({ result: undefined });
-const forecast = reactive({ result: [] });
 
 const updateWeather = async () => {
+  // https://api.pirateweather.net/forecast/aybNUYnBNDLYdNAt1KbYGSDmb8IXm2ly/32.1145,-110.9392
   const response = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?id=5318313&units=imperial&appid=${apiKey}`
+    `https://api.pirateweather.net/forecast/${apiKey}/32.1145,-110.9392`
   );
 
   weather.result = await response.json();
   console.log("===>", weather.result);
 };
 
-const updateForeccast = async () => {
-  const response = await fetch(
-    `https://api.openweathermap.org/data/2.5/forecast?id=5318313&units=imperial&appid=${apiKey}`
-  );
-
-  const data = await response.json();
-  for (let i = 3; i < data.list.length; i += 8) {
-    forecast.result.push(data.list[i]);
+const forecast = computed(() => {
+  if (weather.result) {
+    const days = [];
+    for (let d = 1; d < 6; d++) {
+      days.push(weather.result.daily.data[d]);
+    }
+    return days;
   }
-
-  console.log(forecast.result);
-};
+});
 
 updateWeather();
-updateForeccast();
 </script>
 
 <style lang="scss" scoped></style>
