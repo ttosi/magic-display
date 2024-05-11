@@ -20,20 +20,17 @@
         </div>
       </div>
       <div class="flex items-center gap-1">
-        <mdicon name="umbrella" class="text-blue-700" />{{
-          Math.round(weather.result.currently.precipProbability * 100)
-        }}%
+        <mdicon name="umbrella" class="text-blue-700" />
+        {{ Math.round(weather.result.currently.precipProbability * 100) }}%
       </div>
       <div class="flex items-center gap-1">
-        <mdicon name="weather-windy" class="text-slate-500" />{{
-          Math.round(weather.result.currently.windSpeed)
-        }}
+        <mdicon name="weather-windy" class="text-slate-500" />
+        {{ Math.round(weather.result.currently.windSpeed) }}
         mph
       </div>
       <div class="flex items-center gap-1">
-        <mdicon name="water-percent" class="text-blue-700" />{{
-          Math.round(weather.result.currently.humidity)
-        }}%
+        <mdicon name="water-percent" class="text-blue-700" />
+        {{ Math.round(weather.result.currently.humidity) }}%
       </div>
       <div class="flex items-center gap-1">
         <div><mdicon name="weather-sunset-up" class="text-yellow-300" /></div>
@@ -41,7 +38,7 @@
           {{
             dayjs
               .unix(weather.result.daily.data[0].sunriseTime)
-              .format("h:mm A")
+              .format('h:mm A')
           }}
         </div>
         <div class="ml-3">
@@ -49,7 +46,7 @@
         </div>
         <div>
           {{
-            dayjs.unix(weather.result.daily.data[0].sunsetTime).format("h:mm A")
+            dayjs.unix(weather.result.daily.data[0].sunsetTime).format('h:mm A')
           }}
         </div>
       </div>
@@ -59,7 +56,7 @@
   <div class="flex items-center justify-center text-slate-400">
     <div v-for="day in forecast" :id="day.time" class="text-center">
       <div class="w-36">
-        <div>{{ dayjs.unix(day.time).format("dddd") }}</div>
+        <div>{{ dayjs.unix(day.time).format('dddd') }}</div>
         <div class="justify-center flex">
           <div class="bg-clear-64">&nbsp;</div>
         </div>
@@ -77,33 +74,37 @@
 </template>
 
 <script setup>
-import { computed, reactive } from "vue";
-import dayjs from "dayjs";
+import { computed, reactive } from 'vue'
+import dayjs from 'dayjs'
 
-const apiKey = import.meta.env.VITE_PIRATE_WEATHER_API_KEY;
-const weather = reactive({ result: undefined });
+const apiKey = import.meta.env.VITE_PIRATE_WEATHER_API_KEY
+const weather = reactive({ result: undefined })
 
 const updateWeather = async () => {
-  // https://api.pirateweather.net/forecast/aybNUYnBNDLYdNAt1KbYGSDmb8IXm2ly/32.1145,-110.9392
+  // https://api.pirateweather.net/forecast/[apikey]/32.1145,-110.9392
   const response = await fetch(
     `https://api.pirateweather.net/forecast/${apiKey}/32.1145,-110.9392`
-  );
+  )
 
-  weather.result = await response.json();
-  console.log("===>", weather.result);
-};
+  weather.result = await response.json()
+  console.log('===>', weather.result)
+}
 
+// skip today's forecast and only bring in 5 days
 const forecast = computed(() => {
   if (weather.result) {
-    const days = [];
+    const days = []
     for (let d = 1; d < 6; d++) {
-      days.push(weather.result.daily.data[d]);
+      days.push(weather.result.daily.data[d])
     }
-    return days;
+    return days
   }
-});
+})
 
-updateWeather();
+updateWeather()
+const updateWeatherInterval = setInterval(() => {
+  updateWeather()
+}, 60000 * 60)
 </script>
 
 <style lang="scss" scoped></style>
