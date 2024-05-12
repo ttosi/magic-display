@@ -90,7 +90,7 @@ const updateWeather = async () => {
   console.log('===>', weather.result)
 }
 
-// skip today's forecast and only bring in 5 days
+// skip today's forecast and next 5 days
 const forecast = computed(() => {
   if (weather.result) {
     const days = []
@@ -104,7 +104,7 @@ const forecast = computed(() => {
 updateWeather()
 const updateWeatherInterval = setInterval(() => {
   updateWeather()
-}, 60000 * 60)
+}, 60000 * 5)
 </script>
 
 <style lang="scss" scoped></style>
