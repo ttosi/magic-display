@@ -1,6 +1,6 @@
 <template>
   <div v-if="weather.result" class="justify-center">
-    <div class="flex items-center justify-center">
+    <div class="flex items-center justify-center mb-3">
       <div class="bg-sunny-128"></div>
       <div class="text-7xl">
         {{ Math.round(weather.result.currently.temperature) }}&deg;
@@ -36,9 +36,7 @@
         <div><mdicon name="weather-sunset-up" class="text-yellow-300" /></div>
         <div>
           {{
-            dayjs
-              .unix(weather.result.daily.data[0].sunriseTime)
-              .format('h:mm A')
+            dayjs.unix(weather.result.daily.data[0].sunriseTime).format('h:mm')
           }}
         </div>
         <div class="ml-3">
@@ -46,7 +44,7 @@
         </div>
         <div>
           {{
-            dayjs.unix(weather.result.daily.data[0].sunsetTime).format('h:mm A')
+            dayjs.unix(weather.result.daily.data[0].sunsetTime).format('h:mm')
           }}
         </div>
       </div>
@@ -62,6 +60,11 @@
         </div>
       </div>
       <div>
+        <div class="flex justify-center items-center gap-1">
+          <div>{{ Math.round(day.temperatureHigh) }}&deg;</div>
+          <div>/</div>
+          <div>{{ Math.round(day.temperatureLow) }}&deg;</div>
+        </div>
         <div class="flex justify-center items-center gap-1">
           <div><mdicon name="umbrella" size="18" /></div>
           <div>{{ day.precipProbability }}%</div>

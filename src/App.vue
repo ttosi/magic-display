@@ -4,7 +4,7 @@ import Weather from './components/Weather.vue'
 </script>
 
 <template>
-  <main class="w-1/2">
+  <main class="w-5/12">
     <DateTime />
     <div class="mt-20">
       <Weather />
