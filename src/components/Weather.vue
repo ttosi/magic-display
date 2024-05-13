@@ -1,7 +1,7 @@
 <template>
   <div v-if="weather.result" class="justify-center">
     <div class="flex items-center justify-center mb-3">
-      <div class="bg-sunny-128"></div>
+      <div :class="`bg-${weather.result.currently.icon}-128`"></div>
       <div class="text-7xl">
         {{ Math.round(weather.result.currently.temperature) }}&deg;
       </div>
@@ -56,7 +56,7 @@
       <div class="w-36">
         <div>{{ dayjs.unix(day.time).format('dddd') }}</div>
         <div class="justify-center flex">
-          <div class="bg-clear-64">&nbsp;</div>
+          <div :class="`bg-${day.icon}-64`">&nbsp;</div>
         </div>
       </div>
       <div>
