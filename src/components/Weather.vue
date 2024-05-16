@@ -20,16 +20,16 @@
         </div>
       </div>
       <div class="flex items-center gap-1">
-        <mdicon name="umbrella" class="text-blue-700" />
+        <mdicon name="umbrella" class="text-blue-500" />
         {{ Math.floor(weather.result.currently.precipProbability * 100) }}%
       </div>
       <div class="flex items-center gap-1">
-        <mdicon name="weather-windy" class="text-slate-500" />
+        <mdicon name="weather-windy" class="text-slate-300" />
         {{ Math.round(weather.result.currently.windSpeed) }}
         mph
       </div>
       <div class="flex items-center gap-1">
-        <mdicon name="water-percent" class="text-blue-700" />
+        <mdicon name="water-percent" class="text-blue-500" />
         {{ Math.floor(weather.result.currently.humidity * 100) }}%
       </div>
       <div class="flex items-center gap-1">
