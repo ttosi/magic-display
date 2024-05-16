@@ -30,7 +30,7 @@
       </div>
       <div class="flex items-center gap-1">
         <mdicon name="water-percent" class="text-blue-700" />
-        {{ weather.result.currently.humidity * 100 }}%
+        {{ Math.floor(weather.result.currently.humidity * 100) }}%
       </div>
       <div class="flex items-center gap-1">
         <div><mdicon name="weather-sunset-up" class="text-yellow-300" /></div>
