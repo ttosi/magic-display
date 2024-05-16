@@ -3,3 +3,4 @@ dist
 .env
 
 client_secret.json
+calendar-api-test.html
