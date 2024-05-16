@@ -2,7 +2,7 @@
   <div v-if="weather.result" class="justify-center">
     <div class="flex items-center justify-center mb-3">
       <div :class="`bg-${weather.result.currently.icon}-128`"></div>
-      <div class="text-7xl">
+      <div class="text-6xl">
         {{ Math.round(weather.result.currently.temperature) }}&deg;
       </div>
     </div>
@@ -21,7 +21,7 @@
       </div>
       <div class="flex items-center gap-1">
         <mdicon name="umbrella" class="text-blue-700" />
-        {{ Math.round(weather.result.currently.precipProbability * 100) }}%
+        {{ Math.floor(weather.result.currently.precipProbability * 100) }}%
       </div>
       <div class="flex items-center gap-1">
         <mdicon name="weather-windy" class="text-slate-500" />
@@ -51,7 +51,7 @@
     </div>
   </div>
   <hr class="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700" />
-  <div class="flex items-center justify-center text-xl">
+  <div class="flex items-center justify-center text-xl gap-3">
     <div v-for="day in forecast" :id="day.time" class="text-center">
       <div class="w-36">
         <div>{{ dayjs.unix(day.time).format('dddd') }}</div>
@@ -65,9 +65,9 @@
           <div>/</div>
           <div>{{ Math.round(day.temperatureLow) }}&deg;</div>
         </div>
-        <div class="flex justify-center items-center gap-1">
+        <div class="flex justify-center items-center gap-0">
           <div><mdicon name="umbrella" size="18" /></div>
-          <div>{{ day.precipProbability * 100 }}%</div>
+          <div>{{ Math.floor(day.precipProbability * 100) }}%</div>
           <div class="ml-2"><mdicon name="weather-windy" size="18" /></div>
           <div>{{ Math.round(day.windSpeed) }}mph</div>
         </div>
@@ -85,7 +85,7 @@ const weather = reactive({ result: undefined })
 
 const updateWeather = async () => {
   const response = await fetch(
-    `https://api.pirateweather.net/forecast/${apiKey}/32.1145,-110.9392`
+    `https://api.pirateweather.net/forecast/${apiKey}/44.93,-93.20`
   )
 
   weather.result = await response.json()
