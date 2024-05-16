@@ -34,13 +34,13 @@
   background: url('weather-icons-128.png') -306px -158px;
 }
 
-.bg-partlysunny-day-128 {
+.bg-partly-sunny-day-128 {
   width: 128px;
   height: 128px;
   background: url('weather-icons-128.png') -10px -306px;
 }
 
-.bg-partlycloudy-day-128 {
+.bg-partly-cloudy-day-128 {
   width: 128px;
   height: 128px;
   background: url('weather-icons-128.png') -158px -306px;
@@ -82,25 +82,25 @@
   background: url('weather-icons-128.png') -158px -454px;
 }
 
-.bg-partlysunny-night-128 {
+.bg-partly-sunny-night-128 {
   width: 128px;
   height: 128px;
   background: url('weather-icons-128.png') -306px -454px;
 }
 
-.bg-partlycloudy-night-128 {
+.bg-partly-cloudy-night-128 {
   width: 128px;
   height: 128px;
   background: url('weather-icons-128.png') -454px -454px;
 }
 
-.bg-mostlysunny-night-128 {
+.bg-mostly-sunny-night-128 {
   width: 128px;
   height: 128px;
   background: url('weather-icons-128.png') -602px -10px;
 }
 
-.bg-mostlycloudy-night-128 {
+.bg-mostly-cloudy-night-128 {
   width: 128px;
   height: 128px;
   background: url('weather-icons-128.png') -602px -158px;
@@ -166,13 +166,13 @@
   background: url('weather-icons-128.png') -750px -306px;
 }
 
-.bg-mostlysunny-day-128 {
+.bg-mostly-sunny-day-128 {
   width: 128px;
   height: 128px;
   background: url('weather-icons-128.png') -750px -454px;
 }
 
-.bg-mostlycloudy-day-128 {
+.bg-mostly-cloudy-day-128 {
   width: 128px;
   height: 128px;
   background: url('weather-icons-128.png') -750px -602px;
