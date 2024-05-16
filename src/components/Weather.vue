@@ -1,6 +1,6 @@
 <template>
   <div v-if="weather.result" class="justify-center">
-    <div class="flex items-center justify-center mb-3">
+    <div class="flex items-center justify-center mb-3 gap-4">
       <div :class="`bg-${weather.result.currently.icon}-128`"></div>
       <div class="text-7xl">
         {{ Math.round(weather.result.currently.temperature) }}&deg;
@@ -85,7 +85,7 @@ const weather = reactive({ result: undefined })
 
 const updateWeather = async () => {
   const response = await fetch(
-    `https://api.pirateweather.net/forecast/${apiKey}/44.93,-93.20`
+    `https://api.pirateweather.net/forecast/${apiKey}/32.2540,-110.9742`
   )
 
   weather.result = await response.json()
