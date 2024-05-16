@@ -124,7 +124,7 @@
   background: url('weather-icons-128.png') -10px -602px;
 }
 
-.bg-cloudy-night-128 {
+.bg-cloudy-128 {
   width: 128px;
   height: 128px;
   background: url('weather-icons-128.png') -158px -602px;
@@ -196,7 +196,7 @@
   background: url('weather-icons-128.png') -306px -750px;
 }
 
-.bg-cloudy-day-128 {
+.bg-cloudy-128 {
   width: 128px;
   height: 128px;
   background: url('weather-icons-128.png') -454px -750px;

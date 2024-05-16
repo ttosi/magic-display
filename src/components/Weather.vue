@@ -2,7 +2,7 @@
   <div v-if="weather.result" class="justify-center">
     <div class="flex items-center justify-center mb-3">
       <div :class="`bg-${weather.result.currently.icon}-128`"></div>
-      <div class="text-6xl">
+      <div class="text-7xl">
         {{ Math.round(weather.result.currently.temperature) }}&deg;
       </div>
     </div>
@@ -50,7 +50,7 @@
       </div>
     </div>
   </div>
-  <hr class="h-px my-3 bg-gray-200 border-0 dark:bg-gray-700" />
+  <hr class="h-px my-6 bg-gray-200 border-0 dark:bg-gray-700" />
   <div class="flex items-center justify-center text-xl gap-3">
     <div v-for="day in forecast" :id="day.time" class="text-center">
       <div class="w-36">
