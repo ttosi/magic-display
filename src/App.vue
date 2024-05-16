@@ -1,5 +1,5 @@
 <template>
-  <main class="w-5/12">
+  <main class="w-6/12">
     <DateTime />
     <div class="mt-20">
       <Weather />
