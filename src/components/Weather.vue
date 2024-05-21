@@ -1,44 +1,50 @@
 <template>
-  <div v-if="weather.response" class="justify-center">
-    <div class="flex items-center justify-center mb-3 gap-4">
-      <div :class="`bg-${weather.response.currently.icon}-128`"></div>
+  <div v-if="weather.data" class="justify-center">
+    <div class="flex items-center justify-center mb-3 gap-1">
+      <div>
+        <img :src="weather.data.current.condition.icon" class="w-32 h-32" />
+      </div>
       <div class="text-7xl">
-        {{ Math.round(weather.response.currently.temperature) }}&deg;
+        {{ Math.round(weather.data.current.temp_f) }}&deg;
       </div>
     </div>
     <div class="flex items-center justify-between text-3xl">
       <div class="flex items-center gap-1">
         <div class="text-red-500"><mdicon name="thermometer-high" /></div>
         <div>
-          {{ Math.round(weather.response.daily.data[0].temperatureHigh) }}&deg;
+          {{
+            Math.round(weather.data.forecast.forecastday[0].day.maxtemp_f)
+          }}&deg;
         </div>
         <div class="text-blue-300">
           <mdicon name="thermometer-low" />
         </div>
         <div>
-          {{ Math.round(weather.response.daily.data[0].temperatureLow) }}&deg;
+          {{
+            Math.round(weather.data.forecast.forecastday[0].day.mintemp_f)
+          }}&deg;
         </div>
       </div>
       <div class="flex items-center gap-1">
         <mdicon name="umbrella" class="text-blue-500" />
-        {{ Math.floor(weather.response.currently.precipProbability * 100) }}%
+        {{ weather.data.forecast.forecastday[0].day.daily_chance_of_rain }}%
       </div>
       <div class="flex items-center gap-1">
         <mdicon name="weather-windy" class="text-slate-300" />
-        {{ Math.round(weather.response.currently.windSpeed) }}
+        {{ Math.round(weather.data.current.wind_mph) }}
         mph
       </div>
       <div class="flex items-center gap-1">
         <mdicon name="water-percent" class="text-blue-500" />
-        {{ Math.floor(weather.response.currently.humidity * 100) }}%
+        {{ weather.data.current.humidity }}%
       </div>
       <div class="flex items-center gap-1">
         <div><mdicon name="weather-sunset-up" class="text-yellow-300" /></div>
         <div>
           {{
-            dayjs
-              .unix(weather.response.daily.data[0].sunriseTime)
-              .format('h:mm')
+            weather.data.forecast.forecastday[0].astro.sunrise
+              .replace(/^0+/, '')
+              .replace('AM', '')
           }}
         </div>
         <div class="ml-3">
@@ -46,7 +52,9 @@
         </div>
         <div>
           {{
-            dayjs.unix(weather.response.daily.data[0].sunsetTime).format('h:mm')
+            weather.data.forecast.forecastday[0].astro.sunset
+              .replace(/^0+/, '')
+              .replace('PM', '')
           }}
         </div>
       </div>
@@ -56,22 +64,23 @@
   <div class="flex items-center justify-center text-xl gap-3">
     <div v-for="day in forecast" :id="day.time" class="text-center">
       <div class="w-36">
-        <div>{{ dayjs.unix(day.time).format('dddd') }}</div>
+        <div>{{ dayjs(day.date).format('dddd') }}</div>
         <div class="justify-center flex">
-          <div :class="`bg-${day.icon}-64`">&nbsp;</div>
+          <!-- <div :class="`bg-${day.icon}-64`">&nbsp;</div> -->
+          <div><img :src="day.day.condition.icon" /></div>
         </div>
       </div>
       <div>
         <div class="flex justify-center items-center gap-1">
-          <div>{{ Math.round(day.temperatureHigh) }}&deg;</div>
+          <div>{{ Math.round(day.day.maxtemp_f) }}&deg;</div>
           <div>/</div>
-          <div>{{ Math.round(day.temperatureLow) }}&deg;</div>
+          <div>{{ Math.round(day.day.mintemp_f) }}&deg;</div>
         </div>
         <div class="flex justify-center items-center gap-0">
           <div><mdicon name="umbrella" size="18" /></div>
-          <div>{{ Math.floor(day.precipProbability * 100) }}%</div>
+          <div>{{ day.day.daily_chance_of_rain }}%</div>
           <div class="ml-2"><mdicon name="weather-windy" size="18" /></div>
-          <div>{{ Math.round(day.windSpeed) }}mph</div>
+          <div>{{ Math.round(day.day.maxwind_mph) }}mph</div>
         </div>
       </div>
     </div>
@@ -82,23 +91,23 @@
 import { computed, reactive } from 'vue'
 import dayjs from 'dayjs'
 
-const apiKey = import.meta.env.VITE_PIRATE_WEATHER_API_KEY
-const weather = reactive({ response: undefined })
+const API_KEY = import.meta.env.VITE_WEATHER_API_KEY
+const weather = reactive({ data: undefined })
 
 const updateWeather = async () => {
   const response = await fetch(
-    `https://api.pirateweather.net/forecast/${apiKey}/32.2540,-110.9742`
+    `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=85716&days=6&alerts=yes&astro=yes`
   )
-
-  weather.response = await response.json()
+  weather.data = await response.json()
+  console.log(weather.data)
 }
 
 // skip today's forecast and only display next 5 days
 const forecast = computed(() => {
-  if (weather.response) {
+  if (weather.data) {
     const days = []
     for (let d = 1; d < 6; d++) {
-      days.push(weather.response.daily.data[d])
+      days.push(weather.data.forecast.forecastday[d])
     }
     return days
   }
