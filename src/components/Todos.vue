@@ -1,18 +1,20 @@
 <template>
-  <div class="w-full">
+  <div class="w-full mr-5">
     <div v-for="project in projects.response" class="mb-5">
       <div>
-        <div class="w-full p-2 bg-slate-900 font-semibold mb-2">
+        <div class="w-full p-2 bg-slate-900 font-semibold mb-2 text-2xl">
           {{ project.name.toUpperCase() }}
         </div>
-        <div v-if="!project.tasks" class="text-slate-600 italic ml-3 p-1">
+        <div
+          v-if="!project.tasks"
+          class="text-slate-600 italic ml-3 p-1 text-xl">
           No Items
         </div>
         <div
           v-else
           v-for="task in project.tasks"
           class="bg-black ml-3 p-1 flex">
-          <div class="truncate">
+          <div class="truncate text-xl">
             {{ task.content }}
           </div>
         </div>
