@@ -2,7 +2,7 @@
   <div class="w-full mr-5">
     <div v-for="project in projects.response" class="mb-5">
       <div>
-        <div class="w-full p-2 bg-slate-900 font-semibold mb-2 text-2xl">
+        <div class="w-full p-2 bg-slate-700 font-semibold mb-2 text-xl">
           {{ project.name.toUpperCase() }}
         </div>
         <div

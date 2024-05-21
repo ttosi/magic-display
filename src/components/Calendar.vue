@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="border-slate-500 border">
-      <div class="flex bg-slate-900">
+      <div class="flex bg-slate-700">
         <div
           v-for="weekDay in month.weekdays"
           class="w-1/6 justify-center flex p-2">
