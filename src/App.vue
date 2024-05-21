@@ -1,5 +1,8 @@
 <template>
-  <main class="flex w-full m-16 gap-28 items-center justify-center">
+  <main class="flex w-full m-12 gap-7 items-center justify-center">
+    <div class="w-1/4 h-full">
+      <Calendar />
+    </div>
     <div class="w-1/2">
       <div class="w-full">
         <DateTime />
@@ -8,12 +11,9 @@
         </div>
       </div>
     </div>
-    <!-- <div class="w-1/2 justify-end flex">
-      <div class="flex-col w-full">
-        <Calendar class="h-1/2" />
-        <Todos />
-      </div>
-    </div> -->
+    <div class="w-1/4 h-full">
+      <Todos />
+    </div>
   </main>
 </template>
 
