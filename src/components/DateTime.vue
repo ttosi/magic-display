@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="text-8xl text-center">{{ time }}</div>
+    <div class="text-8xl font-normal text-center">{{ time }}</div>
     <div class="text-3xl text-center">{{ date }}</div>
   </div>
 </template>

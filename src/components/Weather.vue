@@ -79,7 +79,7 @@
           <div><mdicon name="umbrella" size="18" /></div>
           <div>{{ day.day.daily_chance_of_rain }}%</div>
           <div class="ml-2"><mdicon name="weather-windy" size="18" /></div>
-          <div>{{ Math.round(day.day.maxwind_mph) }}mph</div>
+          <div>{{ Math.round(day.day.maxwind_mph) }}</div>
         </div>
       </div>
     </div>
@@ -104,7 +104,7 @@ const updateWeather = async () => {
 const forecast = computed(() => {
   if (weather.data) {
     const days = []
-    for (let d = 1; d < 4; d++) {
+    for (let d = 1; d < 5; d++) {
       days.push(weather.data.forecast.forecastday[d])
     }
     return days

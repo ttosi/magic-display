@@ -30,11 +30,11 @@
         <div class="w-full p-1 pl-2 bg-slate-700 font-semibold mb-2 text-xl">
           {{ dayjs(day).format('dddd, MMMM DD').toUpperCase() }}
         </div>
-        <div v-for="event in events" class="bg-black ml-3 p-1 flex text-xl">
+        <div v-for="event in events" class="bg-black ml-3 p-1 flex">
           <div class="mr-3 w-16">
             {{ dayjs(event.start.dateTime).format('h A') }}
           </div>
-          <div>
+          <div class="truncate">
             {{ event.summary }}
           </div>
         </div>

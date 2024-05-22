@@ -5,16 +5,14 @@
         <div class="w-full p-1 pl-2 bg-slate-700 font-semibold mb-2 text-xl">
           {{ project.name.toUpperCase().replace('INBOX', 'UNCATEGORIZED') }}
         </div>
-        <div
-          v-if="!project.tasks"
-          class="text-slate-600 italic ml-3 p-1 text-xl">
+        <div v-if="!project.tasks" class="text-slate-600 italic ml-3 p-1">
           No Items
         </div>
         <div
           v-else
           v-for="task in project.tasks"
           class="bg-black ml-3 p-1 flex">
-          <div class="truncate text-xl">
+          <div class="truncate">
             {{ task.content }}
           </div>
         </div>
