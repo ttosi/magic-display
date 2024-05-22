@@ -1,5 +1,5 @@
 <template>
-  <main class="flex w-full m-12 gap-7 items-center justify-center">
+  <main class="flex w-full m-12 items-center gap-6 justify-between">
     <div class="w-1/4 h-full">
       <Calendar />
     </div>

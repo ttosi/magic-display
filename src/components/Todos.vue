@@ -1,9 +1,9 @@
 <template>
   <div class="w-full mr-5">
-    <div v-for="project in projects.response" class="mb-5">
+    <div v-for="project in projects.data" class="mb-2">
       <div>
-        <div class="w-full p-2 bg-slate-700 font-semibold mb-2 text-xl">
-          {{ project.name.toUpperCase() }}
+        <div class="w-full p-1 pl-2 bg-slate-700 font-semibold mb-2 text-xl">
+          {{ project.name.toUpperCase().replace('INBOX', 'UNCATEGORIZED') }}
         </div>
         <div
           v-if="!project.tasks"
@@ -28,14 +28,14 @@ import { TodoistApi } from '@doist/todoist-api-typescript'
 import { reactive } from 'vue'
 
 const todoistApi = new TodoistApi(import.meta.env.VITE_TODOIST_API_KEY)
-const projects = reactive({ response: undefined })
+const projects = reactive({ data: undefined })
 
 const updateTodos = async () => {
-  projects.response = await await todoistApi.getProjects()
+  projects.data = await await todoistApi.getProjects()
   const tasks = await todoistApi.getTasks()
 
   tasks.forEach((t) => {
-    const project = projects.response.find((p) => p.id === t.projectId)
+    const project = projects.data.find((p) => p.id === t.projectId)
     if (!project.hasOwnProperty('tasks')) {
       project.tasks = []
     }
@@ -46,7 +46,7 @@ const updateTodos = async () => {
 updateTodos()
 const updateTodosInterval = setInterval(() => {
   updateTodos()
-}, 60000 * 5)
+}, 60000 * 30)
 </script>
 
 <style lang="scss" scoped></style>

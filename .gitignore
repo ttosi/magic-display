@@ -2,6 +2,5 @@ node_modules
 dist
 .env
 
-client_secret.json
-calendar-api-test.html
-keep-api-test.html
+credentials.json
+token.json

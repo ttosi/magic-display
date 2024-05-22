@@ -8,7 +8,7 @@
         {{ Math.round(weather.data.current.temp_f) }}&deg;
       </div>
     </div>
-    <div class="flex items-center justify-between text-3xl">
+    <div class="flex items-center justify-center gap-6 text-3xl">
       <div class="flex items-center gap-1">
         <div class="text-red-500"><mdicon name="thermometer-high" /></div>
         <div>
@@ -38,7 +38,7 @@
         <mdicon name="water-percent" class="text-blue-500" />
         {{ weather.data.current.humidity }}%
       </div>
-      <div class="flex items-center gap-1">
+      <!-- <div class="flex items-center gap-1">
         <div><mdicon name="weather-sunset-up" class="text-yellow-300" /></div>
         <div>
           {{
@@ -57,16 +57,15 @@
               .replace('PM', '')
           }}
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
-  <hr class="h-px my-6 bg-gray-200 border-0 dark:bg-gray-700" />
+  <hr class="h-px my-6 mx-20 bg-gray-200 border-0 dark:bg-gray-700" />
   <div class="flex items-center justify-center text-xl gap-3">
     <div v-for="day in forecast" :id="day.time" class="text-center">
       <div class="w-36">
         <div>{{ dayjs(day.date).format('dddd') }}</div>
         <div class="justify-center flex">
-          <!-- <div :class="`bg-${day.icon}-64`">&nbsp;</div> -->
           <div><img :src="day.day.condition.icon" /></div>
         </div>
       </div>
@@ -99,14 +98,13 @@ const updateWeather = async () => {
     `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=85716&days=6&alerts=yes&astro=yes`
   )
   weather.data = await response.json()
-  console.log(weather.data)
 }
 
 // skip today's forecast and only display next 5 days
 const forecast = computed(() => {
   if (weather.data) {
     const days = []
-    for (let d = 1; d < 6; d++) {
+    for (let d = 1; d < 4; d++) {
       days.push(weather.data.forecast.forecastday[d])
     }
     return days
