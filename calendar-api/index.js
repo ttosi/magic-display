@@ -83,4 +83,4 @@ async function listEvents(auth) {
 authorize().then(listEvents).catch(console.error)
 setInterval(() => {
   authorize().then(listEvents).catch(console.error)
-}, 60000 * 1)
+}, 60000 * 15)
