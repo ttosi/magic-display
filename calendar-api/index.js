@@ -13,7 +13,6 @@ const port = 3000
 app.use(cors())
 
 app.get('/', (req, res) => {
-  console.log('getting')
   const data = fss.readFileSync('./events.json', {
     encoding: 'utf8',
     flag: 'r',
@@ -22,7 +21,7 @@ app.get('/', (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`calendar api listening on port ${port}`)
 })
 
 const SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']

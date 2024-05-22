@@ -50,11 +50,9 @@ import { reactive } from 'vue'
 
 const month = createDateMatrix(new Date(), { firstDay: 'sunday' })
 const events = reactive({ data: undefined })
-// const days2 = reactive({ data: undefined })
 
 const getEvents = async () => {
   const response = await fetch('http://127.0.0.1:3000/')
-  // events.data = await response.json()
   const data = await response.json()
 
   const days = {}
@@ -67,10 +65,6 @@ const getEvents = async () => {
   })
 
   events.data = days
-
-  for (const [key, value] of Object.entries(days)) {
-    console.log(dayjs(key).format('dddd'))
-  }
 }
 getEvents()
 </script>
