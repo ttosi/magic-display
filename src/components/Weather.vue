@@ -4,7 +4,7 @@
       <div>
         <img :src="weather.data.current.condition.icon" class="w-32 h-32" />
       </div>
-      <div class="text-7xl">
+      <div class="text-7xl font-normal">
         {{ Math.round(weather.data.current.temp_f) }}&deg;
       </div>
     </div>
