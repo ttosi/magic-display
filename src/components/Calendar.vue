@@ -51,7 +51,7 @@ import { reactive } from 'vue'
 const month = createDateMatrix(new Date(), { firstDay: 'sunday' })
 const events = reactive({ data: undefined })
 
-const getEvents = async () => {
+const updateEvents = async () => {
   const response = await fetch('http://127.0.0.1:3000/')
   const data = await response.json()
 
@@ -66,7 +66,11 @@ const getEvents = async () => {
 
   events.data = days
 }
-getEvents()
+
+updateEvents()
+const updateEventsInterval = setInterval(() => {
+  updateEvents()
+}, 60000 * 15)
 </script>
 
 <style lang="scss" scoped>
