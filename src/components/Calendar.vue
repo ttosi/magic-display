@@ -26,15 +26,18 @@
       </div>
     </div> -->
     <div>
-      <div v-for="(events, day) in events.data">
-        <div class="w-full p-1 pl-2 bg-slate-700 font-semibold mb-2 text-xl">
+      <div v-for="(events, day) in events.data" class="mb-2">
+        <div
+          class="w-full p-1 pl-2 font-semibold text-xl border border-slate-400 mb-2">
           {{ dayjs(day).format('dddd, MMMM DD').toUpperCase() }}
         </div>
-        <div v-for="event in events" class="bg-black ml-3 p-1 flex">
-          <div class="mr-3 w-16">
+        <!-- <hr class="h-px bg-gray-200 border-0 dark:bg-gray-700" /> -->
+
+        <div v-for="event in events" class="bg-black ml-3 p-0.5 flex">
+          <div class="mr-3 w-20 font-normal text-2xl">
             {{ dayjs(event.start.dateTime).format('h A') }}
           </div>
-          <div class="truncate">
+          <div class="truncate font-normal text-xl">
             {{ event.summary }}
           </div>
         </div>
