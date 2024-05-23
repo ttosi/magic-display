@@ -2,7 +2,10 @@
   <div v-if="weather.data" class="justify-center">
     <div class="flex items-center justify-center mb-3 gap-1">
       <div>
-        <img :src="weather.data.current.condition.icon" class="w-32 h-32" />
+        <!-- <img :src="weather.data.current.condition.icon" class="w-32 h-32" /> -->
+        <!-- <div :class="`bg-${weather.result.currently.icon}-128`"></div> -->
+        <div
+          :class="weatherIcon(weather.data.current.condition.icon, 128)"></div>
       </div>
       <div class="text-7xl font-normal">
         {{ Math.round(weather.data.current.temp_f) }}&deg;
@@ -66,7 +69,8 @@
       <div class="w-36">
         <div>{{ dayjs(day.date).format('dddd') }}</div>
         <div class="justify-center flex">
-          <div><img :src="day.day.condition.icon" /></div>
+          <!-- <div><img :src="day.day.condition.icon" /></div> -->
+          <div :class="weatherIcon(day.day.condition.icon, 64)"></div>
         </div>
       </div>
       <div>
@@ -110,6 +114,19 @@ const forecast = computed(() => {
     return days
   }
 })
+
+const weatherIcon = (iconUrl, size) => {
+  console.log(weather.data.current.condition)
+  console.log(iconUrl)
+  const iconUrlParts = iconUrl.split('/')
+  console.log(iconUrlParts)
+  return `${iconUrlParts[5]}-${iconUrlParts[6].replace('.png', '')}-${size}`
+}
+
+// const weatherIcons64 = (iconUrl) => {
+//   const iconUrlParts = iconUrl.split('/')
+//   return `${iconUrlParts[5]}-${iconUrlParts[6].replace('.png', '')}`
+// }
 
 updateWeather()
 const updateWeatherInterval = setInterval(() => {
