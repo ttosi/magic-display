@@ -34,8 +34,8 @@
         <!-- <hr class="h-px bg-gray-200 border-0 dark:bg-gray-700" /> -->
 
         <div v-for="event in events" class="bg-black ml-3 p-0.5 flex">
-          <div class="mr-3 w-20 font-normal text-2xl">
-            {{ dayjs(event.start.dateTime).format('h A') }}
+          <div class="mr-3 w-20 font-normal text-xl">
+            {{ dayjs(event.start.dateTime).format('h a') }}
           </div>
           <div class="truncate font-normal text-xl">
             {{ event.summary }}

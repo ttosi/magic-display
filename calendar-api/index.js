@@ -10,6 +10,9 @@ const cors = require('cors')
 const app = express()
 const port = 3000
 
+require('dotenv').config({ path: '../.env' })
+console.log(process.env.VITE_NUM_CALENDAR_EVENTS)
+
 app.use(cors())
 
 app.get('/', (req, res) => {
@@ -71,7 +74,7 @@ async function listEvents(auth) {
   const res = await calendar.events.list({
     calendarId: 'primary',
     timeMin: new Date().toISOString(),
-    maxResults: 15,
+    maxResults: process.env.VITE_NUM_CALENDAR_EVENTS,
     singleEvents: true,
     orderBy: 'startTime',
   })

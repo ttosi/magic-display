@@ -1,6 +1,6 @@
 <template>
   <div class="w-full mr-5">
-    <div v-for="project in projects.data.filter((p) => p.tasks)" class="mb-2">
+    <div v-for="project in projects.data" class="mb-2">
       <div>
         <div
           class="w-full p-1 pl-2 border border-slate-400 font-semibold mb-2 text-xl">
