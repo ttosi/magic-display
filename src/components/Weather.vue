@@ -65,11 +65,11 @@
   </div>
   <hr class="h-px my-6 mx-20 bg-gray-200 border-0 dark:bg-gray-700" />
   <div class="flex items-center justify-center text-xl gap-3">
-    <div v-for="day in forecast" :id="day.time" class="text-center">
+    <div v-for="day in forecast" class="text-center">
       <div class="w-36">
         <div>{{ dayjs(day.date).format('dddd') }}</div>
         <div class="justify-center flex">
-          <!-- <div><img :src="day.day.condition.icon" /></div> -->
+          <div><img :src="day.day.condition.icon" /></div>
           <div :class="weatherIcon(day.day.condition.icon, 64)"></div>
         </div>
       </div>
@@ -102,24 +102,26 @@ const updateWeather = async () => {
     `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=85716&days=6&alerts=yes&astro=yes`
   )
   weather.data = await response.json()
+  console.log(weather.data)
 }
 
 // skip today's forecast and only display next 5 days
 const forecast = computed(() => {
   if (weather.data) {
-    const days = []
-    for (let d = 1; d < 5; d++) {
-      days.push(weather.data.forecast.forecastday[d])
-    }
-    return days
+    // const days = []
+    // for (let d = 1; d < 5; d++) {
+    //   days.push(weather.data.forecast.forecastday[d])
+    // }
+    // console.log(weather.data.forecast.forecastday.slice(1))
+    return weather.data.forecast.forecastday.slice(1)
   }
 })
 
 const weatherIcon = (iconUrl, size) => {
-  console.log(weather.data.current.condition)
-  console.log(iconUrl)
+  // console.log(weather.data.current.condition)
+  // console.log(iconUrl)
   const iconUrlParts = iconUrl.split('/')
-  console.log(iconUrlParts)
+  // console.log(iconUrlParts)
   return `${iconUrlParts[5]}-${iconUrlParts[6].replace('.png', '')}-${size}`
 }
 

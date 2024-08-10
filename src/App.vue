@@ -1,7 +1,7 @@
 <template>
   <main class="flex w-full m-12 items-center gap-6 justify-between">
     <div class="w-1/4 h-full">
-      <Calendar />
+      <!-- <Calendar /> -->
     </div>
     <div class="w-1/2">
       <div class="w-full">
@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="w-1/4 h-full">
-      <Todos />
+      <!-- <Todos /> -->
     </div>
   </main>
 </template>
