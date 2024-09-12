@@ -69,7 +69,7 @@
       <div class="w-36">
         <div>{{ dayjs(day.date).format('dddd') }}</div>
         <div class="justify-center flex">
-          <div><img :src="day.day.condition.icon" /></div>
+          <!-- <div><img :src="day.day.condition.icon" /></div> -->
           <div :class="weatherIcon(day.day.condition.icon, 64)"></div>
         </div>
       </div>
