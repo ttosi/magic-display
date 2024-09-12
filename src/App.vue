@@ -20,8 +20,8 @@
 <script setup>
 import DateTime from './components/DateTime.vue'
 import Weather from './components/Weather.vue'
-import Calendar from './components/Calendar.vue'
-import Todos from './components/Todos.vue'
+// import Calendar from './components/Calendar.vue'
+// import Todos from './components/Todos.vue'
 
 // import dayjs from 'dayjs'
 
