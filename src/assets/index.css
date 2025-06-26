@@ -1,5 +1,5 @@
-@import url("weather-icons-128.css");
-@import url("weather-icons-64.css");
+@import url('weather-icons-128.css');
+@import url('weather-icons-64.css');
 
 @tailwind base;
 @tailwind components;
